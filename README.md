@@ -1,7 +1,7 @@
 # SmartSecurityCamera
 This is the code for the SmartSecurityCamera project and the presentation about it at MakerFaireRome's Maker Learn Session on November 11, 2021. I am using MacOS Catalina for development and also for the livestream presentation but the servers I will be talking about run Debian 10 linux (including PiOS) and the notes for installing and running the sofware are for those.
 
-# Installing the Code
+# Prerequsites
 Debian 10 Linux doesn't come with the command sudo which is kind of mind boggling however here is a good reference on how to install it (this is not necessary for the Pi):
 
 https://www.linuxuprising.com/2019/09/fix-username-is-not-in-sudoers-file.html
@@ -9,9 +9,9 @@ https://www.linuxuprising.com/2019/09/fix-username-is-not-in-sudoers-file.html
 Here is a summary:
 
 $ su - (changes to root user and command prompt changes to #)
-\# apt install sudo
-\# usermod -aG sudo yourusername
-\# reboot
+# apt install sudo
+# usermod -aG sudo yourusername
+# reboot
 
 Also git needs to be installed.
 
