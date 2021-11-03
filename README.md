@@ -1,8 +1,10 @@
 # SmartSecurityCamera
-This is the code for the SmartSecurityCamera project and the presentation about it at MakerFaireRome's Maker Learn Session on November 11, 2021. I am using MacOS Catalina for development and also for the livestream presentation but the servers I will be talking about run Debian 10 linux (including PiOS) and the notes for installing and running the sofware are for those.
+This is the code for the SmartSecurityCamera project and the presentation about it at MakerFaireRome's Maker Learn Session on November 11, 2021. I am using MacOS Catalina for development and also for the livestream presentation but the servers I will be talking about run Debian 10 linux (including PiOS) and the notes for installing and running the sofware are for those systems.
 
-# Prerequsites
-Debian 10 Linux doesn't come with the command sudo which is kind of mind boggling however here is a good reference on how to install it (this is not necessary for the Pi):
+# Prerequsites for Debian 10 Linux (not needed for PiOS)
+This section will save some head scratching if you are new to Debian 10 Linux. 
+
+Debian 10 doesn't come with the command sudo which is kind of mind boggling to me however here is a good reference on how to install it:
 
 https://www.linuxuprising.com/2019/09/fix-username-is-not-in-sudoers-file.html
 
@@ -13,7 +15,7 @@ $ su - (changes to root user and command prompt changes to #)<br>
 \# usermod -aG sudo yourusername<br>
 \# reboot
 
-Also git needs to be installed.
+Git needs to be installed.
 
 $ sudo apt update<br>
 $ sudo apt upgrade<br>
@@ -57,6 +59,7 @@ And here it is with the credentials added:
 rtsp://user:password@192.168.7.94:8554/profile0
 
 # Python Code
+For the purpose of my presentation I have written several Python programs that will be explained below.
 
 Debian 10 Linux comes with two versions of Python installed, 2.7.16 and 3.7.3. Python3 is required for everything in this project and Pip3 is the package manager required. Here is the way to get everything setup properly:
 
@@ -69,3 +72,14 @@ https://www.digitalocean.com/community/tutorials/how-to-install-python-3-and-set
 
 For the rest of these project notes I am assuming that we are NOT using a virtual environment.
 
+We need to install opencv-python and I have found that is best to use slightly older versions. By experiment I have settled on these:
+
+Debian 10:
+$ pip3 install opencv-python==4.2.0.34
+
+PiOS:
+$ pip3 install opencv-python==4.3.0.38
+
+We also need imutils:
+
+$ pip3 install imutils
