@@ -8,16 +8,16 @@ https://www.linuxuprising.com/2019/09/fix-username-is-not-in-sudoers-file.html
 
 Here is a summary:
 
-$ su - (changes to root user and command prompt changes to #)
-\# apt install sudo
-\# usermod -aG sudo yourusername
+$ su - (changes to root user and command prompt changes to #)<br>
+\# apt install sudo<br>
+\# usermod -aG sudo yourusername<br>
 \# reboot
 
 Also git needs to be installed.
 
-$ sudo apt update
-$ sudo apt upgrade
-$ sudo apt install git
+$ sudo apt update<br>
+$ sudo apt upgrade<br>
+$ sudo apt install git<br>
 
 # Installing the Code
 Either download the zip file or install using Git (preferred):
@@ -37,7 +37,7 @@ This is for the Raspberry Pi but it works fine on Debian 10, just say no to inst
 
 To install the script copy and paste the following lines in the terminal:
 
-$ cd SmartSecurityCamera
+$ cd SmartSecurityCamera<br>
 $ npm install
 
 Then to run it:
@@ -60,7 +60,7 @@ rtsp://user:password@192.168.7.94:8554/profile0
 
 Debian 10 Linux comes with two versions of Python installed, 2.7.16 and 3.7.3. Python3 is required for everything in this project and Pip3 is the package manager required. Here is the way to get everything setup properly:
 
-$ sudo apt install python3-pip
+$ sudo apt install python3-pip<br>
 $ sudo apt install build-essential libssl-dev libffi-dev python3-dev
 
 I usually use python3 virtual environments for development but on my servers I don't. The instructions for using virtual environments are here (as well as an explanation for the installation steps above):
