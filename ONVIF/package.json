@@ -1,0 +1,15 @@
+{
+  "name": "onvif",
+  "version": "1.0.0",
+  "description": "Utility to find onvif/rtsp URLs",
+  "main": "findurls.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node findurls.js"
+  },
+  "author": "RocketManRC",
+  "license": "MIT",
+  "dependencies": {
+    "node-onvif": "^0.1.7"
+  }
+}
