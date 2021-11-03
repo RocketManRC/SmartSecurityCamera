@@ -9,9 +9,9 @@ https://www.linuxuprising.com/2019/09/fix-username-is-not-in-sudoers-file.html
 Here is a summary:
 
 $ su - (changes to root user and command prompt changes to #)
-# apt install sudo
-# usermod -aG sudo yourusername
-# reboot
+\# apt install sudo
+\# usermod -aG sudo yourusername
+\# reboot
 
 Also git needs to be installed.
 
