@@ -9,7 +9,7 @@ import config
 from object_detector import ObjectDetector
 from object_detector import ObjectDetectorOptions
 
-rtsp = './examplevideos/halloween3.avi' # use an example video file now instead of the camera
+rtsp = './examplevideos/example0.avi' # use an example video file now instead of the camera
 
 windowName = "Video Window Resized"
 cv2.namedWindow(windowName)
@@ -34,7 +34,7 @@ def main():
         if not ret:
                 break
 
-        smallFrame = imutils.resize(frame, width=1000) 
+        smallFrame = imutils.resize(frame, width=640) 
 
         st = time.time()
         detections = detector.detect(frame)

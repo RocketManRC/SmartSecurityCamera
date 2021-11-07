@@ -79,7 +79,17 @@ $ pip3 install opencv-python==4.2.0.34
 
 PiOS:
 $ pip3 install opencv-python==4.3.0.38
+May also need these:
+$ sudo apt-get install libatlas-base-dev
+$ pip3 install numpy --upgrade
 
 We also need imutils:
 
 $ pip3 install imutils
+
+Install Tensorflow Lite Runtime with support for the Coral TPU (both Debian 10 and PiOS)
+
+$ echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sudo tee /etc/apt/sources.list.d/coral-edgetpu.list
+$ curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
+$ sudo apt update
+$ sudo apt install python3-tflite-runtime

@@ -39,7 +39,7 @@ def main():
             fps = 30.0 / elapsedTime # this is the framerate over the last 30 frames
             print('fps: ', fps)
         
-        smallFrame = imutils.resize(frame, width=1000) # resize the frame with width 500
+        smallFrame = imutils.resize(frame, width=640) # resize the frame with width 500
 
         cv2.rectangle(smallFrame, (100, 100), (200, 200), (0, 255, 0), 2) # draw a red rectangle as an example of annotation
         cv2.putText(smallFrame, 'Test', (100,220), cv2.FONT_HERSHEY_SIMPLEX, .5, (0,0,255), 2) # and also draw the word Test

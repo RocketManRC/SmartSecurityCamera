@@ -10,7 +10,7 @@ from object_detector import ObjectDetector
 from object_detector import ObjectDetectorOptions
 import utils # utils.py contains the code to draw the bounding boxes
 
-rtsp = './examplevideos/halloween3.avi' 
+rtsp = './examplevideos/example0.avi' 
 
 windowName = "Video Window Resized"
 cv2.namedWindow(windowName)
@@ -39,9 +39,9 @@ def main():
 
         if detections:
             annotatedFrame = utils.visualize(frame, detections) # use the visualize utility to show the objects
-            smallFrame = imutils.resize(annotatedFrame, width=1000) 
+            smallFrame = imutils.resize(annotatedFrame, width=640) 
         else:
-            smallFrame = imutils.resize(frame, width=1000)
+            smallFrame = imutils.resize(frame, width=640)
 
         cv2.imshow('Video Window Resized', smallFrame) 
 
