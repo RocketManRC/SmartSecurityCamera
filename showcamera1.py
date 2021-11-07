@@ -37,7 +37,7 @@ def main():
             elapsedTime = frameTime - lastFrameCountTime
             lastFrameCountTime = frameTime
             fps = 30.0 / elapsedTime # this is the framerate over the last 30 frames
-            #print('fps: ', fps)
+            print('fps: ', fps)
         
         smallFrame = imutils.resize(frame, width=1000) # resize the frame with width 500
 
