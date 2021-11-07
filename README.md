@@ -1,5 +1,17 @@
 # SmartSecurityCamera
-This is the code for the SmartSecurityCamera project and the presentation about it at MakerFaireRome's Maker Learn Session on November 11, 2021. I am using MacOS Catalina for development and also for the livestream presentation but the servers I will be talking about run Debian 10 linux (including PiOS) and the notes for installing and running the sofware are for those systems.
+This is the reference material for the SmartSecurityCamera project and the presentation about it at MakerFaireRome's Maker Learn Session on November 11, 2021.
+
+https://makerfairerome.eu/en/maker-learn-festival-en/?edition=2021&event_id=200063
+
+I am using MacOS Catalina for development and also for the livestream presentation but the servers I will be talking about run Debian 10 linux (including PiOS) and the notes for installing and running the sofware are for those systems.
+
+This project uses Tensorflow Lite which is evolving constantly and makes projects obsolete quickly and also means that it is difficult to determine if the information that you find on the Internet is current or not.
+
+What I have attempted to do here is to make example code that is simple and easy to understand and therefore easier to modify and to use in your own project. 
+
+The goal is to use machine learning to make a SmartSecurityCamera and not to become an data scientist!
+
+I will be updating this respository frequently up until the day of my presentation.
 
 # Prerequisites for Debian 10 Linux (not needed for PiOS)
 This section will save some head scratching if you are new to Debian 10 Linux. 
@@ -22,7 +34,7 @@ $ sudo apt upgrade<br>
 $ sudo apt install git<br>
 
 # Installing the Code
-Either download the zip file or install using Git (preferred):
+Either download the zip file or install using Git (preferred as there will likely be lots of changes):
 
 git clone https://github.com/RocketManRC/SmartSecurityCamera.git
 
@@ -58,7 +70,7 @@ And here it is with the credentials added:
 
 rtsp://user:password@192.168.7.94:8554/profile0
 
-# Python Code
+# Python
 For the purpose of my presentation I have written several Python programs that will be explained below.
 
 Debian 10 Linux comes with two versions of Python installed, 2.7.16 and 3.7.3. Python3 is required for everything in this project and Pip3 is the package manager required. Here is the way to get everything setup properly:
@@ -83,7 +95,7 @@ May also need these:
 $ sudo apt-get install libatlas-base-dev
 $ pip3 install numpy --upgrade
 
-We also need imutils:
+We also need imutils (both Debian 10 and PiOS):
 
 $ pip3 install imutils
 
@@ -93,3 +105,23 @@ $ echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | s
 $ curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
 $ sudo apt update
 $ sudo apt install python3-tflite-runtime
+
+# The Python example code (so far)
+
+showcamera0.py - this is perhaps the simplest possible program to display the video from an rtsp IP camera!
+
+showcamera1.py - this adds some basic functions to work with the video (resize and annotate) and also measure the frame rate from the camera which is necessary later for saving the video in files. It also resizes the video to reduce CPU usage as displaying the video is only really for debugging in this application.
+
+showcamera2.py - this shows how to save the full size unannotated video in 5 minute segments
+
+tflite0.py - this runs a tensorflowlite object detector on the camera image frames, shows the detection time and prints info about any objects detected. 
+
+tflite1.py - here we switch to using a captured video file instead of the camera (which we will use from now on)
+
+tflite2.py - now we annotate the found objects with bounding boxes and labels
+
+(more to come...)
+
+
+
+

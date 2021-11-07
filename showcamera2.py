@@ -40,7 +40,7 @@ def main():
 
         frameTime = time.time() # use this to calculate when to start a new file
         
-        smallFrame = imutils.resize(frame, width=640) 
+        smallFrame = imutils.resize(frame, width=480) 
 
         cv2.imshow('Video Window Resized', smallFrame) 
 

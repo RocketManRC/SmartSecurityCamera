@@ -39,9 +39,9 @@ def main():
 
         if detections:
             annotatedFrame = utils.visualize(frame, detections) # use the visualize utility to show the objects
-            smallFrame = imutils.resize(annotatedFrame, width=640) 
+            smallFrame = imutils.resize(annotatedFrame, width=480) 
         else:
-            smallFrame = imutils.resize(frame, width=640)
+            smallFrame = imutils.resize(frame, width=480)
 
         cv2.imshow('Video Window Resized', smallFrame) 
 

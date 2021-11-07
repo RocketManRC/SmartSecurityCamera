@@ -34,7 +34,7 @@ def main():
         if not ret:
                 break
 
-        smallFrame = imutils.resize(frame, width=640) 
+        smallFrame = imutils.resize(frame, width=480) 
 
         st = time.time()
         detections = detector.detect(frame)
