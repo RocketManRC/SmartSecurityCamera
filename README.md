@@ -1,7 +1,7 @@
 # SmartSecurityCamera
 This is the code for the SmartSecurityCamera project and the presentation about it at MakerFaireRome's Maker Learn Session on November 11, 2021. I am using MacOS Catalina for development and also for the livestream presentation but the servers I will be talking about run Debian 10 linux (including PiOS) and the notes for installing and running the sofware are for those systems.
 
-# Prerequsites for Debian 10 Linux (not needed for PiOS)
+# Prerequisites for Debian 10 Linux (not needed for PiOS)
 This section will save some head scratching if you are new to Debian 10 Linux. 
 
 Debian 10 doesn't come with the command sudo which is kind of mind boggling to me however here is a good reference on how to install it:

@@ -3,3 +3,5 @@ ONVIF/node_modules
 .DS_Store
 .DS_Store?
 .gitattributes
+record/
+__pycache__
