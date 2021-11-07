@@ -86,13 +86,13 @@ For the rest of these project notes I am assuming that we are NOT using a virtua
 
 We need to install opencv-python and I have found that is best to use slightly older versions. By experiment I have settled on these:
 
-Debian 10:
+Debian 10:<br>
 $ pip3 install opencv-python==4.2.0.34
 
-PiOS:
-$ pip3 install opencv-python==4.3.0.38
-May also need these:
-$ sudo apt-get install libatlas-base-dev
+PiOS:<br>
+$ pip3 install opencv-python==4.3.0.38<br>
+May also need these:<br>
+$ sudo apt-get install libatlas-base-dev<br>
 $ pip3 install numpy --upgrade
 
 We also need imutils (both Debian 10 and PiOS):
@@ -101,9 +101,9 @@ $ pip3 install imutils
 
 Install Tensorflow Lite Runtime with support for the Coral TPU (both Debian 10 and PiOS)
 
-$ echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sudo tee /etc/apt/sources.list.d/coral-edgetpu.list
-$ curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -
-$ sudo apt update
+$ echo "deb https://packages.cloud.google.com/apt coral-edgetpu-stable main" | sudo tee /etc/apt/sources.list.d/coral-edgetpu.list<br>
+$ curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add -<br>
+$ sudo apt update<br>
 $ sudo apt install python3-tflite-runtime
 
 # The Python example code (so far)
