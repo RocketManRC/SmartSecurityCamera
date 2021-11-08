@@ -120,6 +120,10 @@ tflite1.py - here we switch to using a captured video file instead of the camera
 
 tflite2.py - now we annotate the found objects with bounding boxes and labels
 
+tflite3.py - change to processing every third video frame to accomodate the Raspberry Pi 4
+
+tflite4.py - same as tflite3.py except with the camera to check on the Pi4
+
 (more to come...)
 
 
