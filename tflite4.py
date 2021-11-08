@@ -1,6 +1,6 @@
 # tflite3.py
 
-# Back to the video camera again to test with processing every second frame
+# Back to the video camera again to test with processing every third frame
 
 import cv2
 import imutils 
@@ -36,25 +36,25 @@ def main():
     while cap.isOpened():
         frameCount = frameCount + 1
 
-        if frameCount & 1: # is it an odd numbered frame?
+        if frameCount % 3 == 0: 
             ret, frame = cap.read()
+
+            if not ret:
+                    break
+
+            detections = detector.detect(frame)
+
+            if detections:
+                annotatedFrame = utils.visualize(frame, detections) 
+                smallFrame = imutils.resize(annotatedFrame, width=800) 
+            else:
+                smallFrame = imutils.resize(frame, width=800)
+
+            if showVideo:
+                cv2.imshow('Video Window Resized', smallFrame) 
         else:
-            cap.grab() # no point in decoding it if we aren't going to use it
-            continue
-
-        if not ret:
-                break
-
-        detections = detector.detect(frame)
-
-        if detections:
-            annotatedFrame = utils.visualize(frame, detections) 
-            smallFrame = imutils.resize(annotatedFrame, width=800) 
-        else:
-            smallFrame = imutils.resize(frame, width=800)
-
-        if showVideo:
-            cv2.imshow('Video Window Resized', smallFrame) 
+            cap.grab() 
+            # can add other processing here...
 
         k = cv2.waitKey(1) # we don't need to wait when using the camera
         

@@ -1,6 +1,6 @@
 # tflite3.py
 
-# Lets solve the processing problem on the RasPi by only processing every second frame
+# Lets solve the processing problem on the RasPi by only processing every third frame
 
 import cv2
 import imutils 
@@ -36,31 +36,29 @@ def main():
     while cap.isOpened():
         frameCount = frameCount + 1
 
-        if frameCount & 1: # is it an odd numbered frame?
+        if frameCount % 3 == 0: # is the third frame?
             ret, frame = cap.read()
+
+            if not ret:
+                    break
+
+            detections = detector.detect(frame)
+
+            if detections:
+                annotatedFrame = utils.visualize(frame, detections) 
+                smallFrame = imutils.resize(annotatedFrame, width=800) 
+            else:
+                smallFrame = imutils.resize(frame, width=800)
+
+            if showVideo:
+                cv2.imshow('Video Window Resized', smallFrame) 
+            
+            k = cv2.waitKey(1)   
         else:
             cap.grab() # no point in decoding it if we aren't going to use it
-            continue
-
-        if not ret:
-                break
-
-        detections = detector.detect(frame)
-
-        if detections:
-            annotatedFrame = utils.visualize(frame, detections) 
-            smallFrame = imutils.resize(annotatedFrame, width=800) 
-        else:
-            smallFrame = imutils.resize(frame, width=800)
-
-        if showVideo:
-            cv2.imshow('Video Window Resized', smallFrame) 
-
-        if frameCount & 1: # is it an odd numbered frame?
-            k = cv2.waitKey(67) # wait the full frame time of 67 ms
-        else:
-            k = cv2.waitKey(20) # else just add to the processing time
-        
+            # can add other processing here...
+            k = cv2.waitKey(67) # this is for the skipped frames and can adjust this to accomodate other processing
+       
         if k & 0xFF == ord('q'):
             break
         elif k & 0xFF == ord('0'): 
