@@ -5,3 +5,5 @@ ONVIF/node_modules
 .gitattributes
 record/
 __pycache__
+private/
+trimvideo.py
