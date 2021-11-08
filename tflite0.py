@@ -24,10 +24,13 @@ options = ObjectDetectorOptions(
     score_threshold=0.5,
     max_results=3,
     enable_edgetpu=False)
+
 detector = ObjectDetector(model_path=model_path, options=options)
 
 def main():
     cap = cv2.VideoCapture(rtsp)
+
+    showVideo = 1 
 
     while cap.isOpened():
         ret, frame = cap.read()
@@ -44,12 +47,17 @@ def main():
         if detections:
             print(detections)
 
-        cv2.imshow('Video Window Resized', smallFrame) 
+        if showVideo:
+            cv2.imshow('Video Window Resized', smallFrame) 
 
         k = cv2.waitKey(1) 
         
         if k & 0xFF == ord('q'):
             break
+        elif k & 0xFF == ord('0'): 
+            showVideo = 0
+        elif k & 0xFF == ord('1'): 
+            showVideo = 1
 
     cap.release()
     cv2.destroyAllWindows()

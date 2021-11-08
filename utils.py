@@ -21,8 +21,8 @@ from object_detector import Detection
 
 _MARGIN = 10  # pixels
 _ROW_SIZE = 10  # pixels
-_FONT_SIZE = 1
-_FONT_THICKNESS = 1
+_FONT_SIZE = 2
+_FONT_THICKNESS = 3
 _TEXT_COLOR = (0, 0, 255)  # red
 
 
@@ -47,7 +47,8 @@ def visualize(
     category = detection.categories[0]
     class_name = category.label
     probability = round(category.score, 2)
-    result_text = class_name + ' (' + str(probability) + ')'
+    #result_text = class_name + ' (' + str(probability) + ')'
+    result_text = class_name # take out the probability for demo
     text_location = (_MARGIN + detection.bounding_box.left,
                      _MARGIN + _ROW_SIZE + detection.bounding_box.top)
     cv2.putText(image, result_text, text_location, cv2.FONT_HERSHEY_PLAIN,

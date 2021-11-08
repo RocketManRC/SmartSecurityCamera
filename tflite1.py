@@ -1,6 +1,6 @@
 # tflite1.py
 
-# Run a tensorflowlite object detector on an example video
+# Run a tensorflowlite object detector on an example video instead of the camera (better for testing)
 
 import cv2
 import imutils 
@@ -28,6 +28,8 @@ detector = ObjectDetector(model_path=model_path, options=options)
 def main():
     cap = cv2.VideoCapture(rtsp)
 
+    showVideo = 1 
+
     while cap.isOpened():
         ret, frame = cap.read()
 
@@ -43,7 +45,8 @@ def main():
         if detections:
             print(detections)
 
-        cv2.imshow('Video Window Resized', smallFrame) 
+        if showVideo:
+            cv2.imshow('Video Window Resized', smallFrame) 
 
         # The detection time is 42ms and the time per frame at 15 fps is 67 ms therefore we need to wait here 67-42=25 ms
         # when the source is a video. Plus there is some other overhead so take off another 5 ms to give 20 ms. 
@@ -53,6 +56,10 @@ def main():
         
         if k & 0xFF == ord('q'):
             break
+        elif k & 0xFF == ord('0'): 
+            showVideo = 0
+        elif k & 0xFF == ord('1'): 
+            showVideo = 1
 
     cap.release()
     cv2.destroyAllWindows()
