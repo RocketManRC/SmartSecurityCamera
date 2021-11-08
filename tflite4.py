@@ -21,7 +21,7 @@ model_path = 'ssd_mobilenet_v1_1_metadata_1.tflite'
 
 options = ObjectDetectorOptions(
     num_threads=2,
-    score_threshold=0.5,
+    score_threshold=0.6,
     max_results=3,
     enable_edgetpu=False)
 
