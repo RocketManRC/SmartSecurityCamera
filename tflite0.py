@@ -1,6 +1,6 @@
 # tflite0.py
 
-# Run a tensorflowlite object detector on the image frames and show the detection time
+# Run a tensorflowlite object detector on the camera image frames and show the detection time
 # and print info about any objects detected
 
 import cv2
@@ -15,7 +15,7 @@ rtsp = config.geturl()
 # Open the video window and place it somewhere convenient
 windowName = "Video Window Resized"
 cv2.namedWindow(windowName)
-cv2.moveWindow(windowName, 1600, 600)
+cv2.moveWindow(windowName, 850, 600)
 cv2.setWindowProperty(windowName, cv2.WND_PROP_TOPMOST, 1)
 
 model_path = 'ssd_mobilenet_v1_1_metadata_1.tflite'
@@ -35,7 +35,7 @@ def main():
         if not ret:
                 break
 
-        smallFrame = imutils.resize(frame, width=480) 
+        smallFrame = imutils.resize(frame, width=800) 
 
         st = time.time()
         detections = detector.detect(frame)

@@ -13,7 +13,7 @@ rtsp = './examplevideos/example0.avi' # use an example video file now instead of
 
 windowName = "Video Window Resized"
 cv2.namedWindow(windowName)
-cv2.moveWindow(windowName, 1600, 400)
+cv2.moveWindow(windowName, 850, 600)
 cv2.setWindowProperty(windowName, cv2.WND_PROP_TOPMOST, 1)
 
 model_path = 'ssd_mobilenet_v1_1_metadata_1.tflite'
@@ -34,7 +34,7 @@ def main():
         if not ret:
                 break
 
-        smallFrame = imutils.resize(frame, width=480) 
+        smallFrame = imutils.resize(frame, width=800) 
 
         st = time.time()
         detections = detector.detect(frame)
@@ -45,10 +45,11 @@ def main():
 
         cv2.imshow('Video Window Resized', smallFrame) 
 
-        # The detection time is 26ms and the time per frame at 15 fps is 67 ms therefore we need to wait here 67-26=41 ms
-        # when the source is a video. If it is the camera then we don't have to do this.
+        # The detection time is 42ms and the time per frame at 15 fps is 67 ms therefore we need to wait here 67-42=25 ms
+        # when the source is a video. Plus there is some other overhead so take off another 5 ms to give 20 ms. 
+        # If it is the camera then we don't have to do this.
         # This is going to be dependent on the host processor.
-        k = cv2.waitKey(41) 
+        k = cv2.waitKey(20) 
         
         if k & 0xFF == ord('q'):
             break

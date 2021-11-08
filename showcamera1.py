@@ -14,7 +14,7 @@ rtsp = config.geturl()
 
 windowName = "Video Window Resized"
 cv2.namedWindow(windowName)
-cv2.moveWindow(windowName, 1600, 600)
+cv2.moveWindow(windowName, 850, 600)
 cv2.setWindowProperty(windowName, cv2.WND_PROP_TOPMOST, 1)
 
 def main():
@@ -39,7 +39,7 @@ def main():
             fps = 30.0 / elapsedTime # this is the framerate over the last 30 frames
             print('fps: ', fps)
         
-        smallFrame = imutils.resize(frame, width=480) # resize the frame with width 480
+        smallFrame = imutils.resize(frame, width=800) # resize the frame with width 480
 
         cv2.rectangle(smallFrame, (100, 100), (200, 200), (0, 255, 0), 2) # draw a red rectangle as an example of annotation
         cv2.putText(smallFrame, 'Test', (100,220), cv2.FONT_HERSHEY_SIMPLEX, .5, (0,0,255), 2) # and also draw the word Test

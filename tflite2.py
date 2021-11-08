@@ -14,7 +14,7 @@ rtsp = './examplevideos/example0.avi'
 
 windowName = "Video Window Resized"
 cv2.namedWindow(windowName)
-cv2.moveWindow(windowName, 1600, 400)
+cv2.moveWindow(windowName, 850, 600)
 cv2.setWindowProperty(windowName, cv2.WND_PROP_TOPMOST, 1)
 
 model_path = 'ssd_mobilenet_v1_1_metadata_1.tflite'
@@ -39,13 +39,13 @@ def main():
 
         if detections:
             annotatedFrame = utils.visualize(frame, detections) # use the visualize utility to show the objects
-            smallFrame = imutils.resize(annotatedFrame, width=480) 
+            smallFrame = imutils.resize(annotatedFrame, width=800) 
         else:
-            smallFrame = imutils.resize(frame, width=480)
+            smallFrame = imutils.resize(frame, width=800)
 
         cv2.imshow('Video Window Resized', smallFrame) 
 
-        k = cv2.waitKey(41) 
+        k = cv2.waitKey(20) 
         
         if k & 0xFF == ord('q'):
             break

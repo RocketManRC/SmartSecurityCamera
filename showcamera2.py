@@ -16,7 +16,7 @@ rtsp = config.geturl()
 
 windowName = "Video Window Resized"
 cv2.namedWindow(windowName)
-cv2.moveWindow(windowName, 1600, 600)
+cv2.moveWindow(windowName, 850, 600)
 cv2.setWindowProperty(windowName, cv2.WND_PROP_TOPMOST, 1)
 
 def main():
@@ -40,7 +40,7 @@ def main():
 
         frameTime = time.time() # use this to calculate when to start a new file
         
-        smallFrame = imutils.resize(frame, width=480) 
+        smallFrame = imutils.resize(frame, width=800) 
 
         cv2.imshow('Video Window Resized', smallFrame) 
 
