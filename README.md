@@ -161,5 +161,16 @@ tflite4.py - same as tflite3.py except with the camera to check on the Pi4
 
 (more to come...)
 
-# The final system
-My current working code needs a lot of cleanup and editing to make the use of the Coral TPU optional so it will be at least a week after my presentation before I can provide it here.
+# References
+I have based my example code on the object detection example for the Raspberry Pi in the tensorflow repository on Github here:
+
+https://github.com/tensorflow/examples/tree/master/lite/examples/object_detection/raspberry_pi
+
+This is hot off the press at less than one month old at the time of this writing (November 9, 2021). I made a few changes to the support code to better suit my examples and I changed from the EfficientDet model which is very slow to SSD MobileNet V2 which is what I have been using for the past year.
+
+The object detection models for both CPU and TPU come from here:
+
+https://coral.ai/models/object-detection/
+
+# The final application
+My current working code needs a lot of cleanup as it has evolved quite a lot over the past year and as well I want to bring it in line with the approach taken in the examples so it will be a few days after the presentation until I can get that done and posted here.
