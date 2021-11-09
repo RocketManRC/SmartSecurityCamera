@@ -1,6 +1,6 @@
 # tflite3.py
 
-# Lets solve the processing problem on the RasPi by only processing every third frame
+# Lets solve the processing problem on the SBC (RasPi or the Odyssey) by only processing every third frame
 
 import cv2
 import imutils 
@@ -17,11 +17,11 @@ cv2.namedWindow(windowName)
 cv2.moveWindow(windowName, 850, 600)
 cv2.setWindowProperty(windowName, cv2.WND_PROP_TOPMOST, 1)
 
-model_path = 'ssd_mobilenet_v1_1_metadata_1.tflite'
+model_path = 'ssd_mobilenet_v2_coco_quant_postprocess.tflite'
 
 options = ObjectDetectorOptions(
     num_threads=2,
-    score_threshold=0.6,
+    score_threshold=0.7,
     max_results=3,
     enable_edgetpu=False)
 

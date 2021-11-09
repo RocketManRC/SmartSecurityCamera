@@ -16,10 +16,11 @@ cv2.namedWindow(windowName)
 cv2.moveWindow(windowName, 850, 600)
 cv2.setWindowProperty(windowName, cv2.WND_PROP_TOPMOST, 1)
 
-model_path = 'ssd_mobilenet_v1_1_metadata_1.tflite'
+model_path = 'ssd_mobilenet_v2_coco_quant_postprocess.tflite'
+
 options = ObjectDetectorOptions(
     num_threads=2,
-    score_threshold=0.6,
+    score_threshold=0.7,
     max_results=3,
     enable_edgetpu=False)
 
