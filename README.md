@@ -143,6 +143,8 @@ $ sudo apt update<br>
 $ sudo apt install python3-tflite-runtime
 
 # The Python example code (so far)
+NOTE: the tflite examples also have a version that has "coral" in the filename and they use the Coral TPU to show the performance difference when using the TPU.
+
 showcamera0.py - this is perhaps the simplest possible program to display the video from an rtsp IP camera!
 
 showcamera1.py - this adds some basic functions to work with the video (resize and annotate) and also measure the frame rate from the camera which is necessary later for saving the video in files. It also resizes the video to reduce CPU usage as displaying the video is only really for debugging in this application.
