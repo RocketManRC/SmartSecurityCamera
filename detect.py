@@ -18,7 +18,7 @@ from object_detector import ObjectDetectorOptions
 import utils
 import traceback
 
-useTPU = False # change this from True to False to use the CPU instead
+useTPU = True # change this from True to False to use the CPU instead
 
 rtsp = config.geturl() 
 
