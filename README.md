@@ -145,6 +145,8 @@ $ sudo apt install python3-tflite-runtime
 # The Python example code (so far)
 NOTE: the tflite examples also have a version that has "coral" in the filename and they use the Coral TPU to show the performance difference when using the TPU.
 
+For most of these examples and the final application there must be **two folders named 'record' and 'validated'** created in the application folder.
+
 showcamera0.py - this is perhaps the simplest possible program to display the video from an rtsp IP camera!
 
 showcamera1.py - this adds some basic functions to work with the video (resize and annotate) and also measure the frame rate from the camera which is necessary later for saving the video in files. It also resizes the video to reduce CPU usage as displaying the video is only really for debugging in this application.
@@ -161,7 +163,35 @@ tflite3.py - change to processing every third video frame to accomodate the Rasp
 
 tflite4.py - same as tflite3.py except with the camera to check on the Pi4
 
-(more to come...)
+# The Final Application
+The final application runs on the Odyssey with the Coral Mini PCIe TPU. I haven't made any effort to test this without the TPU due to lack of time however I am pretty sure it can be made to run well enough on the Odyssey and the Raspberry Pi 4 by only processing every third frame as shown in the example tflite4.py.
+
+Here are the features in this application:
+
+- Full size video from the camera is saved in 5 minute segments in the 'record' folder. At the end of each segment if an valid object has been detected the file is renamed by appending a '-v' to the filename. If there is no valid object detection then the previous video file is deleted. The objective of this is to not save video if there is likely nothing of interest in it.
+- For every video frame with a validated object detected in it, an image file (jpg) is saved in the 'validated' folder. This is done at most once a second. There is also a metadata file saved in json format that can be useful in downstream processing.
+- There are some heruistics for determining what a valid object is. These are as follows:
+  - There is a very crude check to exclude objects outside a boundary. In my case I am excluding part of the left side of the image and part of the top. This can be replaced with your own logic to satisfy your requirements.
+  - A list of detected objects is kept and new objects are tested to see if they are the same and ignored if so. Being "the same" means that the two object's center location in the video frame and their size are the within 10% each other. This has worked well to deal with things like vehicles parked in the driveway which would otherwise cause constant detections.
+  - If object is detected that is determined to be the same as one in the list then the timestamp of the one in the list is updated.
+  - Objects that are stale meaning their timestamp hasn't been updated for over 10 minutes are deleted from the list.
+  - No more than 5 person detections are considered valid per 5 minute video frame. This just reduces the number of repetitive detections and is dependent on the environment that the camera will be used in.
+
+# IoT Integration
+The key to integration with other "downstream" applications including IoT and Home Automation is to monitor the 'validated' folder for new images and metadata files. At the present time I have a simple Node-RED flow that monitors this folder and sends a Telegram Messenger notification with image that can be received on any smart phone as well as on a desktop computer or even another application running on some other computer anywhere connected to the Internet. This requires an account on Telegram of course (free) and the creation of a Telegram Bot. There is lots of information out there on how to do this and it is beyond the scope of this project to explain it.
+
+Here is what the Node-RED flow looks like:
+
+![Photo](node-red-camera-alert.tiff)
+
+The code for this is in the file node-red-camera-alert.txt and can be imported into Node-RED with the import function.
+
+The following nodes are required to be installed using the pallet manager:
+- node-red-contrib-telegrambot
+- node-red-contrib-time-range-switch
+- node-red-contrib-watch-director
+
+The telegrambot node needs to be configured with the bot token and the message id and the watch-directory node needs to have the full path of the 'validated' folder.
 
 # References
 I have based my example code on the object detection example for the Raspberry Pi in the tensorflow repository on Github here:
@@ -174,5 +204,3 @@ The object detection models for both CPU and TPU come from here:
 
 https://coral.ai/models/object-detection/
 
-# The final application
-My current working code needs a lot of cleanup as it has evolved quite a lot over the past year and as well I want to bring it in line with the approach taken in the examples so it will be a few days after the presentation until I can get that done and posted here.
