@@ -1,0 +1,234 @@
+[
+    {
+        "id": "b5f577e1.f04088",
+        "type": "tab",
+        "label": "Camera Alert",
+        "disabled": false,
+        "info": "This flow monitors the directory where the camera video clips are saved and sends a message by Telegram Messenger when there is a change. This is only done between 8:00 AM and 10:00 PM.",
+        "env": []
+    },
+    {
+        "id": "76677a00.b2b4d4",
+        "type": "inject",
+        "z": "b5f577e1.f04088",
+        "name": "Init",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 170,
+        "y": 120,
+        "wires": [
+            [
+                "b4453dc5.0f6d7"
+            ]
+        ]
+    },
+    {
+        "id": "b4453dc5.0f6d7",
+        "type": "change",
+        "z": "b5f577e1.f04088",
+        "name": "lastfile->nothing",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lastfile",
+                "pt": "flow",
+                "to": "nothing",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 360,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "c1e64e29.3dae8",
+        "type": "switch",
+        "z": "b5f577e1.f04088",
+        "name": "Not the same as last file",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "neq",
+                "v": "lastfile",
+                "vt": "flow"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 670,
+        "y": 200,
+        "wires": [
+            [
+                "6d063391.0b11ac",
+                "ba89a93c.c00358"
+            ]
+        ]
+    },
+    {
+        "id": "6d063391.0b11ac",
+        "type": "change",
+        "z": "b5f577e1.f04088",
+        "name": "",
+        "rules": [
+            {
+                "t": "set",
+                "p": "lastfile",
+                "pt": "flow",
+                "to": "payload",
+                "tot": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 920,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "d2ef925d.1f9b1",
+        "type": "telegram sender",
+        "z": "b5f577e1.f04088",
+        "name": "Camera Alert",
+        "bot": "43f8935a.2be6fc",
+        "haserroroutput": false,
+        "outputs": 1,
+        "x": 1130,
+        "y": 200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "ba89a93c.c00358",
+        "type": "change",
+        "z": "b5f577e1.f04088",
+        "name": "ConfigureMessage",
+        "rules": [
+            {
+                "t": "move",
+                "p": "payload",
+                "pt": "msg",
+                "to": "payload.content",
+                "tot": "msg"
+            },
+            {
+                "t": "set",
+                "p": "payload.type",
+                "pt": "msg",
+                "to": "photo",
+                "tot": "str"
+            },
+            {
+                "t": "set",
+                "p": "payload.chatId",
+                "pt": "msg",
+                "to": "1561594621",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 930,
+        "y": 200,
+        "wires": [
+            [
+                "d2ef925d.1f9b1"
+            ]
+        ]
+    },
+    {
+        "id": "154ed2f9.2ac2dd",
+        "type": "watch-directory",
+        "z": "b5f577e1.f04088",
+        "folder": "",
+        "recursive": false,
+        "typeEvent": "create",
+        "ignoreInitial": true,
+        "ignoredFiles": ".json$",
+        "ignoredFilesType": "re",
+        "name": "Watch validated",
+        "x": 160,
+        "y": 200,
+        "wires": [
+            [
+                "501f66c2.c92768"
+            ]
+        ]
+    },
+    {
+        "id": "501f66c2.c92768",
+        "type": "time-range-switch",
+        "z": "b5f577e1.f04088",
+        "name": "Between 08:00 and 22:00",
+        "lat": "",
+        "lon": "",
+        "startTime": "08:00",
+        "endTime": "22:00",
+        "startOffset": 0,
+        "endOffset": 0,
+        "x": 390,
+        "y": 180,
+        "wires": [
+            [
+                "c1e64e29.3dae8"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "4ad6631d20644188",
+        "type": "comment",
+        "z": "b5f577e1.f04088",
+        "name": "Send a message with image to Telegram Messenger when a validated image from the camera is detected",
+        "info": "",
+        "x": 840,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "43f8935a.2be6fc",
+        "type": "telegram bot",
+        "botname": "",
+        "usernames": "",
+        "chatids": "",
+        "baseapiurl": "",
+        "updatemode": "polling",
+        "pollinterval": "300",
+        "usesocks": false,
+        "sockshost": "",
+        "socksport": "6667",
+        "socksusername": "anonymous",
+        "sockspassword": "",
+        "bothost": "",
+        "botpath": "",
+        "localbotport": "8443",
+        "publicbotport": "8443",
+        "privatekey": "",
+        "certificate": "",
+        "useselfsignedcertificate": false,
+        "sslterminated": false,
+        "verboselogging": false
+    }
+]
