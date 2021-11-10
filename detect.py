@@ -21,6 +21,7 @@ import traceback
 useTPU = True # change this from True to False to use the CPU instead
 
 rtsp = config.geturl() 
+#rtsp = './examplevideos/example0.avi' 
 
 if useTPU:
     model_path = 'ssd_mobilenet_v2_coco_quant_postprocess_edgetpu.tflite'

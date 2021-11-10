@@ -1,3 +1,6 @@
+![Photo](projectphoto.jpg)
+
+
 # SmartSecurityCamera
 This is the reference material for the SmartSecurityCamera project and the presentation about it at MakerFaireRome's Maker Learn Session on November 11, 2021.
 
