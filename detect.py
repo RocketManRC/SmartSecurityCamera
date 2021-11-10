@@ -18,9 +18,14 @@ from object_detector import ObjectDetectorOptions
 import utils
 import traceback
 
+useTPU = False # change this from True to False to use the CPU instead
+
 rtsp = config.geturl() 
 
-model_path = 'ssd_mobilenet_v2_coco_quant_postprocess_edgetpu.tflite'
+if useTPU:
+    model_path = 'ssd_mobilenet_v2_coco_quant_postprocess_edgetpu.tflite'
+else:
+    model_path = 'ssd_mobilenet_v2_coco_quant_postprocess.tflite'
 
 isMacOS = (platform.system() == 'Darwin') # to detect if we are on the development platform (in my case)
 
@@ -31,7 +36,7 @@ options = ObjectDetectorOptions(
     num_threads=2,
     score_threshold=0.7,
     max_results=3,
-    enable_edgetpu=True)
+    enable_edgetpu=useTPU)
 
 detector = ObjectDetector(model_path=model_path, options=options)
 
