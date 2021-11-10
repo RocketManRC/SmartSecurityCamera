@@ -142,7 +142,7 @@ $ curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add 
 $ sudo apt update<br>
 $ sudo apt install python3-tflite-runtime
 
-# The Python example code (so far)
+# The Python Example Code
 NOTE: the tflite examples also have a version that has "coral" in the filename and they use the Coral TPU to show the performance difference when using the TPU.
 
 For most of these examples and the final application there must be **two folders named 'record' and 'validated'** created in the application folder.
@@ -164,7 +164,7 @@ tflite3.py - change to processing every third video frame to accomodate the Rasp
 tflite4.py - same as tflite3.py except with the camera to check on the Pi4
 
 # The Final Application
-The final application runs on the Odyssey with the Coral Mini PCIe TPU. I haven't made any effort to test this without the TPU due to lack of time however I am pretty sure it can be made to run well enough on the Odyssey and the Raspberry Pi 4 by only processing every third frame as shown in the example tflite4.py.
+The final application runs very well on the Odyssey with the Coral Mini PCIe TPU. I haven't made any effort to test this without the TPU due to lack of time however I am pretty sure it can be made to run well enough on the Odyssey and the Raspberry Pi 4 by only processing every third frame as shown in the example tflite4.py.
 
 Here are the features in this application:
 
@@ -182,11 +182,11 @@ The key to integration with other "downstream" applications including IoT and Ho
 
 Here is what the Node-RED flow looks like:
 
-![Photo](node-red-camera-alert.tiff)
+![Photo](node-red-camera-alert.jpg)
 
 The code for this is in the file node-red-camera-alert.txt and can be imported into Node-RED with the import function.
 
-The following nodes are required to be installed using the pallet manager:
+The following nodes are required to be installed using the palette manager:
 - node-red-contrib-telegrambot
 - node-red-contrib-time-range-switch
 - node-red-contrib-watch-director
