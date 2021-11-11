@@ -8,7 +8,7 @@ https://makerfairerome.eu/en/maker-learn-festival-en/?edition=2021&event_id=2000
 
 The project is described on my website here:
 
-https://github.com/RocketManRC/SmartSecurityCamera
+https://rocketmanrc.com/smartsecuritycamerasystem.html
 
 # Background
 The way our house is situated it is not convenient to look out the front over the driveway unless you sit on a chair near a window. This is frustrating and inconvenient for a number of reasons as you can imagine and not something that a Maker and electronics enthusiast should put up with!
