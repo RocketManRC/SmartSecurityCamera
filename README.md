@@ -43,6 +43,8 @@ https://wiki.seeedstudio.com/Coral-Mini-PCIe-Accelerator-on-ODYSSEY-X86J4105/
 
 ![Photo](https://github.com/RocketManRC/SmartSecurityCamera/blob/master/odyssey2.jpeg)
 
+![Photo](https://github.com/RocketManRC/SmartSecurityCamera/blob/master/odyssey-inside.jpeg)
+
 # The Project
 I am using MacOS Catalina for development and also for the livestream presentation but the servers I will be talking about run Debian 10 linux (including PiOS) and the notes for installing and running the sofware are for those systems.
 
